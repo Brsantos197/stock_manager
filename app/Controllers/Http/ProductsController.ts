@@ -27,12 +27,14 @@ export default class ProductsController {
   public async update({ request, response }: HttpContextContract) {
     try {
       const { id } = request.params()
-      const { name, category_id, type } = request.body()
+      const { category_id, name, type, quantity, status } = request.body()
       const product = await Product.find(id)
       if (product) {
+        product.category_id = category_id
         product.name = name
         product.type = type
-        product.category_id = category_id
+        product.quantity = quantity
+        product.status = status
         await product.save()
       }
       return response.json(product)

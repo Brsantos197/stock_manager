@@ -6,14 +6,20 @@ export default class Product extends BaseModel {
   public id: number
 
   @column({})
+  public category_id: number
+
+  @column({})
   public name: string
 
   @column({})
   public type: string
 
   @column({})
-  public category_id: number
+  public quantity: number
 
+  @column({})
+  public status: boolean
+  
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
